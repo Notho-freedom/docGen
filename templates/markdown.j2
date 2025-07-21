@@ -1,0 +1,192 @@
+# 📚 Documentation - {{ module_name }}
+
+<div align="center">
+
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Documentation](https://img.shields.io/badge/Documentation-Générée%20automatiquement-green.svg)
+{% if enhanced %}
+![IA](https://img.shields.io/badge/IA-Groq%20Powered-orange.svg)
+{% endif %}
+
+**Généré le {{ generation_date }}**  
+**Fichier source :** `{{ source_file }}`
+
+</div>
+
+---
+
+{% if module_doc %}
+## 📖 Documentation du module
+
+### Documentation originale
+```
+{{ module_doc }}
+```
+{% endif %}
+
+{% if imports.standard or imports.third_party %}
+## 📦 Analyse des imports
+
+**Total des imports :** {{ imports.standard|length + imports.third_party|length }}
+
+{% if imports.standard %}
+### 🐍 Modules de la bibliothèque standard
+```python
+{% for import in imports.standard %}
+import {{ import }}
+{% endfor %}
+```
+{% endif %}
+
+{% if imports.third_party %}
+### 📚 Modules tiers
+```python
+{% for import in imports.third_party %}
+import {{ import }}
+{% endfor %}
+```
+{% endif %}
+{% endif %}
+
+{% if functions %}
+## 🔧 Fonctions ({{ functions|length }})
+
+{% for func in functions %}
+### {{ loop.index }}. `{{ func.name }}`
+
+**Complexité :** 
+{% if func.complexity <= 5 %}🟢{% elif func.complexity <= 10 %}🟡{% else %}🔴{% endif %} {{ func.complexity }} | 
+**Lignes :** {{ func.lines[0] }}-{{ func.lines[1] }} | 
+**Code :** {{ func.lines[1] - func.lines[0] + 1 }} lignes
+
+{% if func.doc %}
+```python
+def {{ func.name }}({{ func.signature if func.signature else '...' }}):
+```
+
+#### 📝 Documentation originale
+```
+{{ func.doc }}
+```
+{% endif %}
+
+{% if func.enhanced_doc %}
+#### 🤖 Documentation enrichie par IA
+```
+{{ func.enhanced_doc }}
+```
+{% endif %}
+
+{% if func.examples %}
+#### 💡 Exemples d'utilisation
+{% for example in func.examples %}
+```python
+{{ example }}
+```
+{% endfor %}
+{% endif %}
+
+{% if func.suggestions %}
+#### 💭 Suggestions d'amélioration
+{% for suggestion in func.suggestions %}
+- {{ suggestion }}
+{% endfor %}
+{% endif %}
+
+---
+{% endfor %}
+{% endif %}
+
+{% if classes %}
+## 🧱 Classes ({{ classes|length }})
+
+{% for cls in classes %}
+### {{ loop.index }}. `{{ cls.name }}`
+
+**Complexité :** 
+{% if cls.complexity <= 5 %}🟢{% elif cls.complexity <= 10 %}🟡{% else %}🔴{% endif %} {{ cls.complexity }} | 
+**Lignes :** {{ cls.lines[0] }}-{{ cls.lines[1] }} | 
+**Méthodes :** {{ cls.methods|length }}
+
+{% if cls.doc %}
+#### 📝 Documentation originale
+```
+{{ cls.doc }}
+```
+{% endif %}
+
+{% if cls.enhanced_doc %}
+#### 🤖 Documentation enrichie par IA
+```
+{{ cls.enhanced_doc }}
+```
+{% endif %}
+
+{% if cls.methods %}
+#### 🔧 Méthodes
+{% for method in cls.methods %}
+- **`{{ method.name }}`** : {{ method.doc if method.doc else 'Pas de documentation' }}
+{% endfor %}
+{% endif %}
+
+{% if cls.examples %}
+#### 💡 Exemples d'utilisation
+{% for example in cls.examples %}
+```python
+{{ example }}
+```
+{% endfor %}
+{% endif %}
+
+---
+{% endfor %}
+{% endif %}
+
+{% if quality_analysis %}
+## 📊 Analyse de qualité
+
+### 🎯 Métriques générales
+- **Couverture de documentation** : {{ "%.1f"|format(quality_analysis.doc_coverage) }}%
+- **Complexité moyenne** : {{ "%.1f"|format(quality_analysis.avg_complexity) }}
+- **Score de qualité** : {{ "%.1f"|format(quality_analysis.quality_score) }}/100
+
+### 🔍 Recommandations
+{% for rec in quality_analysis.recommendations %}
+- {{ rec }}
+{% endfor %}
+{% endif %}
+
+{% if stats %}
+## 📈 Statistiques détaillées
+
+| Métrique | Valeur |
+|----------|--------|
+| **Lignes totales** | {{ stats.total_lines }} |
+| **Lignes de code** | {{ stats.code_lines }} |
+| **Lignes de commentaires** | {{ stats.comment_lines }} |
+| **Fonctions** | {{ stats.function_count }} |
+| **Classes** | {{ stats.class_count }} |
+| **Imports** | {{ stats.import_count }} |
+{% if enhanced %}
+| **Enrichissements IA** | {{ stats.ai_enhancements }} |
+{% endif %}
+
+### 📊 Répartition
+- **Code** : {{ "%.1f"|format(stats.code_ratio * 100) }}%
+- **Commentaires** : {{ "%.1f"|format(stats.comment_ratio * 100) }}%
+- **Documentation** : {{ "%.1f"|format(stats.doc_ratio * 100) }}%
+{% endif %}
+
+---
+
+<div align="center">
+
+**🎉 Documentation générée avec docGen AI**
+
+{% if enhanced %}
+*Enrichie par Groq AI 🤖*
+{% endif %}
+
+*Propulsé par Genesis Company*
+
+</div>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - {{ module_name }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .badge {
+            background: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .badge.ai {
+            background: #e67e22;
+        }
+        
+        .badge.docs {
+            background: #27ae60;
+        }
+        
+        .content {
+            padding: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.4rem;
+        }
+        
+        .function, .class {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .function h4, .class h4 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metrics {
+            display: flex;
+            gap: 1rem;
+            margin: 0.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .metric {
+            background: #ecf0f1;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+        
+        .complexity-low { background: #d5f4e6; color: #27ae60; }
+        .complexity-medium { background: #fef9e7; color: #f39c12; }
+        .complexity-high { background: #fadbd8; color: #e74c3c; }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .doc-block {
+            background: #f8f9fa;
+            border-left: 3px solid #3498db;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .enhanced-doc {
+            background: #fff3cd;
+            border-left: 3px solid #ffc107;
+        }
+        
+        .examples {
+            background: #d1ecf1;
+            border-left: 3px solid #17a2b8;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .suggestions {
+            background: #d4edda;
+            border-left: 3px solid #28a745;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .stats-table th,
+        .stats-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .stats-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .toc {
+            background: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .toc h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .toc ul {
+            list-style: none;
+        }
+        
+        .toc li {
+            margin: 0.5rem 0;
+        }
+        
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 1rem;
+            }
+            
+            .section {
+                padding: 1rem;
+            }
+            
+            .metrics {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Documentation - {{ module_name }}</h1>
+            <div class="badges">
+                <span class="badge">Python 3.8+</span>
+                <span class="badge docs">Documentation Générée</span>
+                {% if enhanced %}
+                <span class="badge ai">Groq AI Powered</span>
+                {% endif %}
+            </div>
+            <p><strong>Généré le {{ generation_date }}</strong></p>
+            <p><strong>Fichier source :</strong> <code>{{ source_file }}</code></p>
+        </div>
+        
+        <div class="content">
+            {% if module_doc %}
+            <div class="section">
+                <h2>📖 Documentation du module</h2>
+                <div class="doc-block">
+                    <pre>{{ module_doc }}</pre>
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if imports.standard or imports.third_party %}
+            <div class="section">
+                <h2>📦 Analyse des imports</h2>
+                <p><strong>Total des imports :</strong> {{ imports.standard|length + imports.third_party|length }}</p>
+                
+                {% if imports.standard %}
+                <h3>🐍 Modules de la bibliothèque standard</h3>
+                <div class="code-block">
+                    {% for import in imports.standard %}
+                    import {{ import }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% if imports.third_party %}
+                <h3>📚 Modules tiers</h3>
+                <div class="code-block">
+                    {% for import in imports.third_party %}
+                    import {{ import }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            
+            {% if functions %}
+            <div class="section">
+                <h2>🔧 Fonctions ({{ functions|length }})</h2>
+                
+                {% for func in functions %}
+                <div class="function">
+                    <h4>{{ loop.index }}. {{ func.name }}</h4>
+                    <div class="metrics">
+                        <span class="metric complexity-{% if func.complexity <= 5 %}low{% elif func.complexity <= 10 %}medium{% else %}high{% endif %}">
+                            Complexité: {{ func.complexity }}
+                        </span>
+                        <span class="metric">Lignes: {{ func.lines[0] }}-{{ func.lines[1] }}</span>
+                        <span class="metric">Code: {{ func.lines[1] - func.lines[0] + 1 }} lignes</span>
+                    </div>
+                    
+                    {% if func.doc %}
+                    <div class="code-block">
+                        def {{ func.name }}({{ func.signature if func.signature else '...' }}):
+                    </div>
+                    <div class="doc-block">
+                        <h5>📝 Documentation originale</h5>
+                        <pre>{{ func.doc }}</pre>
+                    </div>
+                    {% endif %}
+                    
+                    {% if func.enhanced_doc %}
+                    <div class="enhanced-doc">
+                        <h5>🤖 Documentation enrichie par IA</h5>
+                        <pre>{{ func.enhanced_doc }}</pre>
+                    </div>
+                    {% endif %}
+                    
+                    {% if func.examples %}
+                    <div class="examples">
+                        <h5>💡 Exemples d'utilisation</h5>
+                        {% for example in func.examples %}
+                        <div class="code-block">{{ example }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    {% if func.suggestions %}
+                    <div class="suggestions">
+                        <h5>💭 Suggestions d'amélioration</h5>
+                        <ul>
+                            {% for suggestion in func.suggestions %}
+                            <li>{{ suggestion }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% if classes %}
+            <div class="section">
+                <h2>🧱 Classes ({{ classes|length }})</h2>
+                
+                {% for cls in classes %}
+                <div class="class">
+                    <h4>{{ loop.index }}. {{ cls.name }}</h4>
+                    <div class="metrics">
+                        <span class="metric complexity-{% if cls.complexity <= 5 %}low{% elif cls.complexity <= 10 %}medium{% else %}high{% endif %}">
+                            Complexité: {{ cls.complexity }}
+                        </span>
+                        <span class="metric">Lignes: {{ cls.lines[0] }}-{{ cls.lines[1] }}</span>
+                        <span class="metric">Méthodes: {{ cls.methods|length }}</span>
+                    </div>
+                    
+                    {% if cls.doc %}
+                    <div class="doc-block">
+                        <h5>📝 Documentation originale</h5>
+                        <pre>{{ cls.doc }}</pre>
+                    </div>
+                    {% endif %}
+                    
+                    {% if cls.enhanced_doc %}
+                    <div class="enhanced-doc">
+                        <h5>🤖 Documentation enrichie par IA</h5>
+                        <pre>{{ cls.enhanced_doc }}</pre>
+                    </div>
+                    {% endif %}
+                    
+                    {% if cls.methods %}
+                    <div class="doc-block">
+                        <h5>🔧 Méthodes</h5>
+                        <ul>
+                            {% for method in cls.methods %}
+                            <li><strong>{{ method.name }}</strong> : {{ method.doc if method.doc else 'Pas de documentation' }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    
+                    {% if cls.examples %}
+                    <div class="examples">
+                        <h5>💡 Exemples d'utilisation</h5>
+                        {% for example in cls.examples %}
+                        <div class="code-block">{{ example }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {% if stats %}
+            <div class="section">
+                <h2>📈 Statistiques détaillées</h2>
+                <table class="stats-table">
+                    <tr>
+                        <th>Métrique</th>
+                        <th>Valeur</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Lignes totales</strong></td>
+                        <td>{{ stats.total_lines }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lignes de code</strong></td>
+                        <td>{{ stats.code_lines }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lignes de commentaires</strong></td>
+                        <td>{{ stats.comment_lines }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fonctions</strong></td>
+                        <td>{{ stats.function_count }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Classes</strong></td>
+                        <td>{{ stats.class_count }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Imports</strong></td>
+                        <td>{{ stats.import_count }}</td>
+                    </tr>
+                    {% if enhanced %}
+                    <tr>
+                        <td><strong>Enrichissements IA</strong></td>
+                        <td>{{ stats.ai_enhancements }}</td>
+                    </tr>
+                    {% endif %}
+                </table>
+                
+                <h3>📊 Répartition</h3>
+                <div class="metrics">
+                    <span class="metric">Code: {{ "%.1f"|format(stats.code_ratio * 100) }}%</span>
+                    <span class="metric">Commentaires: {{ "%.1f"|format(stats.comment_ratio * 100) }}%</span>
+                    <span class="metric">Documentation: {{ "%.1f"|format(stats.doc_ratio * 100) }}%</span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="footer">
+            <h3>🎉 Documentation générée avec docGen AI</h3>
+            {% if enhanced %}
+            <p><em>Enrichie par Groq AI 🤖</em></p>
+            {% endif %}
+            <p><em>Propulsé par Genesis Company</em></p>
+        </div>
+    </div>
+</body>
+</html> 

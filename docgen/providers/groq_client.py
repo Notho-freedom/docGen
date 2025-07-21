@@ -4,7 +4,10 @@ import logging
 from typing import Optional, List
 from .memory import Memory
 
-from config import config
+try:
+    from ..config import config
+except ImportError:
+    from config import config
 
 class GroqClient:
     def __init__(self, logger: logging.Logger):

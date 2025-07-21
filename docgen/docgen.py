@@ -3,8 +3,8 @@ import asyncio
 import logging
 from typing import Dict, List, Optional, Any
 try:
-    from providers.groq_client import GroqClient
-    from config import config
+    from .providers.groq_client import GroqClient
+    from .config import config
 except ImportError:
     # Fallback pour les tests sans dépendances complètes
     GroqClient = None

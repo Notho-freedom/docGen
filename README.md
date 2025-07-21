@@ -1,298 +1,298 @@
 # 🚀 docGen AI - Générateur de Documentation Python Intelligent
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-2.0.0-orange.svg)](https://pypi.org/project/docgen-ai/)
-[![AI Powered](https://img.shields.io/badge/AI-Groq%20Powered-purple.svg)](https://groq.com/)
+<div align="center">
 
-**docGen AI** est un générateur de documentation Python révolutionnaire qui utilise l'intelligence artificielle (Groq) pour créer une documentation riche, intelligente et professionnelle automatiquement.
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Documentation](https://img.shields.io/badge/Documentation-Générée%20automatiquement-green.svg)
+![IA](https://img.shields.io/badge/IA-Groq%20Powered-orange.svg)
+![Version](https://img.shields.io/badge/Version-2.0.0-purple.svg)
 
-## ✨ Fonctionnalités Principales
+**Générateur de documentation Python intelligent avec enrichissement IA**
 
-### 🤖 Enrichissement par IA
-- **Documentation intelligente** : Génération automatique de descriptions détaillées
-- **Exemples d'utilisation** : Création d'exemples concrets et pratiques
-- **Conseils d'usage** : Suggestions de bonnes pratiques et pièges à éviter
-- **Analyse de qualité** : Évaluation automatique de la qualité du code
-- **Suggestions d'amélioration** : Recommandations pour optimiser le code
+*Propulsé par Groq AI 🤖 | Développé par Genesis Company*
 
-### 📊 Analyse Avancée
-- **Complexité cyclomatique** : Calcul automatique de la complexité des fonctions
-- **Couverture de documentation** : Statistiques détaillées sur la documentation
-- **Analyse des imports** : Catégorisation des dépendances
-- **Patterns de conception** : Identification automatique des patterns utilisés
-- **Métriques de qualité** : Notes et recommandations personnalisées
+</div>
 
-### 🎨 Formats de Sortie Multiples
-- **Markdown enrichi** : Documentation moderne avec emojis et badges
-- **HTML interactif** : Interface web élégante et responsive
-- **JSON structuré** : Données brutes pour intégration avec d'autres outils
-- **Rapports détaillés** : Statistiques et analyses complètes
+---
 
-## 🚀 Installation
+## 📋 Vue d'ensemble
 
-### Installation via pip
-```bash
-pip install docgen-ai
-```
+**docGen AI** est un générateur de documentation Python avancé qui utilise l'IA Groq pour créer une documentation riche et détaillée. Il analyse automatiquement votre code Python et génère une documentation structurée avec métriques de qualité, suggestions d'amélioration et exemples d'utilisation.
 
-### Installation depuis les sources
-```bash
-git clone https://github.com/votre-repo/docGen.git
-cd docGen
-pip install -e .
-```
+## 🏗️ Structure du Projet
 
-### Configuration de l'API Groq
-1. Créez un compte sur [Groq](https://groq.com/)
-2. Obtenez votre clé API
-3. Créez un fichier `.env` à la racine du projet :
-```env
-GROQ_API_KEY=votre_clé_api_groq
-```
-
-## 📖 Utilisation
-
-### Utilisation Basique
-```bash
-# Documentation basique (sans IA)
-docgen mon_fichier.py
-
-# Documentation enrichie par IA
-docgen mon_fichier.py --enhanced
-
-# Spécifier le fichier de sortie
-docgen mon_fichier.py -o documentation.md
-```
-
-### Formats de Sortie
-```bash
-# Markdown (par défaut)
-docgen mon_fichier.py --format markdown
-
-# HTML interactif
-docgen mon_fichier.py --format html
-
-# JSON structuré
-docgen mon_fichier.py --format json
-```
-
-### Options Avancées
-```bash
-# Mode verbeux avec plus de détails
-docgen mon_fichier.py --verbose
-
-# Désactiver l'IA même si --enhanced est spécifié
-docgen mon_fichier.py --enhanced --no-ai
-
-# Afficher l'aide complète
-docgen --help
-```
-
-## 📊 Exemple de Sortie
-
-### Résumé Exécutif
-```
-🎯 Résumé exécutif
-
-| Métrique | Valeur | Statut |
-|----------|--------|--------|
-| **Note de qualité** | 🟢 A | Excellent |
-| **Couverture doc** | 85.7% | 🟡 Bon |
-| **Complexité moy.** | 3.2 | 🟢 Faible |
-| **Fonctions** | 7 | 📊 |
-| **Classes** | 2 | 📊 |
-```
-
-### Documentation Enrichie
-```markdown
-## 🔧 Fonctions (7)
-
-### 1. `extract_doc_info`
-
-**Complexité :** 🟢 2 | **Lignes :** 15-45 | **Code :** 25 lignes
-
-```python
-def extract_doc_info(file_path: str) -> Dict[str, Any]:
-```
-
-#### 📝 Documentation originale
-```
-Extrait les informations de documentation d'un fichier Python.
-```
-
-#### 🤖 Documentation enrichie par IA
-Cette fonction analyse un fichier Python et extrait automatiquement toutes les informations de documentation disponibles. Elle utilise l'analyse syntaxique (AST) pour identifier les fonctions, classes, docstrings et métadonnées importantes.
-
-**Cas d'usage typiques :**
-- Génération automatique de documentation
-- Analyse de la qualité du code
-- Audit de la couverture de documentation
-
-#### 💡 Exemples d'utilisation
-```python
-# Analyse d'un fichier simple
-doc_info = extract_doc_info("mon_module.py")
-
-# Accès aux informations extraites
-print(f"Fonctions trouvées : {len(doc_info['functions'])}")
-print(f"Classes trouvées : {len(doc_info['classes'])}")
-```
-
-#### 💭 Conseils d'utilisation
-- Utilisez cette fonction pour automatiser la génération de documentation
-- Idéal pour les projets avec de nombreux fichiers Python
-- Combine bien avec les outils de CI/CD pour maintenir la documentation à jour
-```
-
-## 🏗️ Architecture
-
-### Structure du Projet
 ```
 docGen/
-├── docgen.py          # Moteur principal d'extraction et d'enrichissement
-├── formatter.py       # Générateur de formats de sortie
-├── cli.py            # Interface en ligne de commande
-├── config.py         # Configuration et gestion des paramètres
-├── providers/
-│   ├── groq_client.py # Client Groq pour l'IA
-│   └── memory.py     # Gestion de la mémoire des conversations
-├── templates/        # Templates pour les formats de sortie
-└── examples/         # Exemples d'utilisation
+├── 📦 docgen/                    # Package principal
+│   ├── __init__.py              # Point d'entrée
+│   ├── docgen.py                # Moteur d'extraction et enrichissement
+│   ├── formatter.py             # Générateur de formats (MD/HTML/JSON)
+│   ├── cli.py                   # Interface ligne de commande
+│   ├── config.py                # Configuration Pydantic
+│   └── providers/               # Services externes
+│       ├── __init__.py          # Exports des providers
+│       ├── groq_client.py       # Client Groq AI
+│       └── memory.py            # Gestion mémoire conversations
+├── 🧪 tests/                    # Tests unitaires
+│   ├── __init__.py
+│   └── test_docgen.py           # Tests complets
+├── 📚 docs/                     # Documentation complète
+│   ├── README.md                # Documentation principale
+│   ├── API.md                   # Guide d'API
+│   ├── CONTRIBUTING.md          # Guide de contribution
+│   ├── CHANGELOG.md             # Historique des versions
+│   ├── STRUCTURE.md             # Structure détaillée
+│   └── INSTALLATION_GUIDE.md    # Guide d'installation
+├── 📝 examples/                 # Exemples d'utilisation
+│   └── demo.py                  # Fichier de démonstration
+├── 🎨 templates/                # Templates de sortie
+│   ├── markdown.j2              # Template Markdown Jinja2
+│   └── html.j2                  # Template HTML avec CSS
+├── 🔧 Tools/                    # Outils de développement
+│   ├── validate_installation.py # Script de validation
+│   └── generate_report.py       # Générateur de rapports
+├── ⚙️ Config/                   # Configuration
+│   ├── setup.py                 # Configuration setuptools
+│   ├── pyproject.toml           # Configuration moderne PEP 621
+│   ├── MANIFEST.in              # Fichiers à inclure
+│   ├── requirements.txt         # Dépendances principales
+│   ├── requirements-dev.txt     # Dépendances développement
+│   └── env.example              # Variables d'environnement
+├── 📦 Build/                    # Distribution
+│   ├── dist/                    # Packages buildés
+│   └── docgen_ai.egg-info/      # Métadonnées
+├── 📊 Log/                      # Rapports générés
+│   └── *.md, *.json             # Rapports de documentation
+└── 📖 README.md                 # Ce fichier
 ```
 
-### Composants Principaux
+## 🚀 Installation Rapide
 
-#### `DocGenerator`
-- **Extraction** : Analyse AST des fichiers Python
-- **Enrichissement** : Utilisation de Groq pour améliorer la documentation
-- **Analyse** : Calcul de métriques de qualité
+### Prérequis
+- **Python 3.8+**
+- **Clé API Groq** (optionnelle, pour l'enrichissement IA)
 
-#### `DocumentationFormatter`
-- **Markdown** : Génération de documentation riche
-- **HTML** : Interface web interactive
-- **JSON** : Données structurées
+### Installation
+```bash
+# 1. Cloner le projet
+git clone https://github.com/Notho-freedom/docGen.git
+cd docGen
 
-#### `GroqClient`
-- **IA** : Intégration avec l'API Groq
-- **Mémoire** : Gestion du contexte des conversations
-- **Optimisation** : Paramètres adaptatifs
+# 2. Installation en mode développement
+pip install -e Config/
 
-## 🔧 Configuration Avancée
+# 3. Configuration (optionnelle)
+cp Config/env.example .env
+# Éditer .env avec votre clé API Groq
+
+# 4. Validation
+python Tools/validate_installation.py
+```
+
+## 🎯 Utilisation
+
+### Interface CLI
+```bash
+# Documentation basique
+docgen examples/demo.py
+
+# Documentation enrichie par IA
+docgen examples/demo.py --enhanced
+
+# Format HTML
+docgen examples/demo.py --format html
+
+# Sortie personnalisée
+docgen examples/demo.py -o ma_documentation.md --verbose
+```
+
+### Utilisation Programmatique
+```python
+import asyncio
+from docgen import DocGenerator, DocumentationFormatter
+
+# Extraction basique
+generator = DocGenerator()
+doc_info = generator.extract_doc_info("mon_fichier.py")
+
+# Extraction enrichie
+doc_info = await generator.extract_doc_info_enhanced("mon_fichier.py")
+
+# Formatage
+formatter = DocumentationFormatter()
+markdown = formatter.format_markdown(doc_info)
+html = formatter.format_html(doc_info)
+json_output = formatter.format_json(doc_info)
+```
+
+## 🔧 Outils de Développement
+
+### Validation de l'Installation
+```bash
+python Tools/validate_installation.py
+```
+
+### Génération de Rapports
+```bash
+python Tools/generate_report.py
+```
+*Les rapports sont automatiquement sauvegardés dans le dossier `Log/`*
+
+### Tests
+```bash
+# Tests complets
+python -m pytest tests/ -v
+
+# Tests avec couverture
+python -m pytest tests/ --cov=docgen --cov-report=html
+```
+
+## 📊 Fonctionnalités
+
+### 🔍 Extraction Intelligente
+- **Analyse AST** : Extraction complète des fonctions, classes et docstrings
+- **Calcul de complexité** : Métriques cyclomatiques automatiques
+- **Analyse des imports** : Distinction entre bibliothèques standard et tierces
+- **Statistiques détaillées** : Métriques de qualité du code
+
+### 🤖 Enrichissement IA
+- **Intégration Groq** : API asynchrone avec retry automatique
+- **Mémoire conversationnelle** : Contexte persistant pour l'IA
+- **Fallback intelligent** : Fonctionnement sans IA si nécessaire
+- **Enrichissement automatique** : Exemples, suggestions, patterns
+
+### 📄 Formats de Sortie
+- **Markdown riche** : Documentation structurée avec badges et emojis
+- **HTML interactif** : Interface web stylée et responsive
+- **JSON structuré** : Données pour intégration avec d'autres outils
+- **Templates personnalisables** : Extensibilité complète
+
+## 📚 Documentation
+
+### Guides Disponibles
+- **[Guide d'Installation](docs/INSTALLATION_GUIDE.md)** : Instructions détaillées
+- **[Guide d'API](docs/API.md)** : Utilisation programmatique
+- **[Guide de Contribution](docs/CONTRIBUTING.md)** : Standards de développement
+- **[Changelog](docs/CHANGELOG.md)** : Historique des versions
+- **[Structure](docs/STRUCTURE.md)** : Organisation détaillée du projet
+
+### Exemples
+- **[Demo](examples/demo.py)** : Fichier de démonstration complet
+- **[Templates](templates/)** : Templates Markdown et HTML personnalisables
+
+## 🔧 Configuration
 
 ### Variables d'Environnement
 ```env
-# Obligatoire pour l'IA
+# API Groq (obligatoire pour l'IA)
 GROQ_API_KEY=votre_clé_api_groq
-
-# Optionnel - Paramètres Groq
 GROQ_MODEL=llama3-70b-8192
 GROQ_TEMPERATURE=0.3
 GROQ_MAX_TOKENS=1000
+
+# Configuration documentation
+DOC_LANGUAGE=fr
+DEFAULT_FORMAT=markdown
+ENABLE_AI_ENHANCEMENT=true
 ```
 
-### Configuration Personnalisée
+### Configuration Python
 ```python
-from config import Config
+from docgen.config import config
 
-# Personnaliser les paramètres
-config = Config(
-    groq_temperature=0.5,
-    groq_max_tokens=2000,
-    groq_models=["llama3-70b-8192", "mixtral-8x7b-32768"]
-)
+# Modification des paramètres
+config.groq_models = ["llama3-70b-8192", "mixtral-8x7b-32768"]
+config.groq_temperature = 0.5
+config.groq_max_tokens = 2000
 ```
 
-## 🧪 Tests
+## 🧪 Tests et Validation
 
-### Exécution des Tests
+### Validation Automatique
 ```bash
-# Installation des dépendances de développement
-pip install -e ".[dev]"
-
-# Exécution des tests
-pytest
-
-# Tests avec couverture
-pytest --cov=docgen
-
-# Tests asynchrones
-pytest --asyncio-mode=auto
+python Tools/validate_installation.py
 ```
 
-### Exemples d'Utilisation
-```python
-import asyncio
-from docgen import DocGenerator
+**Tests inclus :**
+- ✅ Structure du projet
+- ✅ Imports des modules
+- ✅ Configuration
+- ✅ Extraction basique
+- ✅ Formateur
+- ✅ Interface CLI
+- ✅ Extraction enrichie
 
-# Création d'un générateur
-generator = DocGenerator()
-
-# Extraction basique
-doc_info = generator.extract_doc_info("mon_fichier.py")
-
-# Enrichissement avec IA
-enhanced_doc = await generator.enrich_documentation(doc_info)
+### Tests Unitaires
+```bash
+python -m pytest tests/ -v
 ```
 
-## 📈 Métriques et Qualité
+## 📊 Métriques de Qualité
 
-### Indicateurs de Qualité
-- **Note globale** : A (Excellent) à E (Critique)
-- **Couverture de documentation** : Pourcentage de fonctions/classes documentées
-- **Complexité moyenne** : Complexité cyclomatique moyenne
-- **Fonctions complexes** : Nombre de fonctions nécessitant une refactorisation
+### Complexité Cyclomatique
+- 🟢 **1-5** : Simple
+- 🟡 **6-10** : Modérée
+- 🔴 **11+** : Complexe
 
-### Recommandations Automatiques
-- Documentation manquante
-- Fonctions trop complexes
-- Bonnes pratiques
-- Optimisations possibles
+### Couverture de Documentation
+- **Fonctions documentées** : Pourcentage des fonctions avec docstrings
+- **Classes documentées** : Pourcentage des classes avec docstrings
+- **Moyenne des docstrings** : Longueur moyenne des descriptions
+
+## 🚀 Performance
+
+### Métriques
+- **Temps d'analyse** : < 1 seconde pour un fichier de 500 lignes
+- **Mémoire** : < 50MB pour l'analyse d'un projet moyen
+- **API Groq** : Gestion d'erreurs et retry automatique
+- **Cache** : Optimisation des appels répétés
 
 ## 🤝 Contribution
 
-### Comment Contribuer
+### Développement
 1. **Fork** le projet
-2. **Créez** une branche pour votre fonctionnalité
-3. **Commitez** vos changements
-4. **Poussez** vers la branche
-5. **Ouvrez** une Pull Request
+2. **Clone** votre fork
+3. **Installation** : `pip install -e Config/`
+4. **Tests** : `python Tools/validate_installation.py`
+5. **Commit** avec des messages clairs
+6. **Pull Request** avec description détaillée
 
-### Standards de Code
-```bash
-# Formatage automatique
-black .
-
-# Vérification du style
-flake8 .
-
-# Vérification des types
-mypy .
-```
+### Standards
+- **Black** : Formatage automatique
+- **Flake8** : Linting
+- **MyPy** : Vérification des types
+- **Pytest** : Tests unitaires
+- **Coverage** : Couverture de code
 
 ## 📄 Licence
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
-## 🙏 Remerciements
+## 🆘 Support
 
-- **Groq** pour l'API d'intelligence artificielle
-- **Python AST** pour l'analyse syntaxique
-- **Pydantic** pour la validation des données
-- **La communauté Python** pour les outils et bibliothèques
+### Documentation
+- **Guide d'installation** : `docs/INSTALLATION_GUIDE.md`
+- **Structure du projet** : `docs/STRUCTURE.md`
+- **Exemples** : Dossier `examples/`
 
-## 📞 Support
+### Issues
+- **Bugs** : Créer une issue avec reproduction
+- **Feature requests** : Décrire le cas d'usage
+- **Questions** : Utiliser les discussions GitHub
 
-- **Issues** : [GitHub Issues](https://github.com/votre-repo/docGen/issues)
-- **Documentation** : [Wiki](https://github.com/votre-repo/docGen/wiki)
-- **Discussions** : [GitHub Discussions](https://github.com/votre-repo/docGen/discussions)
+### Contact
+- **Email** : contact@genesis-company.net
+- **GitHub** : Issues et discussions
 
 ---
 
 <div align="center">
 
-**Propulsé par Groq AI 🤖**
+**🎉 docGen AI - Documentation intelligente pour Python**
 
-*Fait avec ❤️ pour la communauté Python*
+*Propulsé par Groq AI 🤖 | Développé par Genesis Company*
+
+[![GitHub stars](https://img.shields.io/github/stars/Notho-freedom/docGen?style=social)](https://github.com/Notho-freedom/docGen)
+[![GitHub forks](https://img.shields.io/github/forks/Notho-freedom/docGen?style=social)](https://github.com/Notho-freedom/docGen)
 
 </div> 

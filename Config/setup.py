@@ -6,12 +6,12 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="docgen-ai",
     version="2.0.0",
-    author="Votre Nom",
-    author_email="votre.email@example.com",
+    author="Genesis Company",
+    author_email="contact@genesis-company.net",
     description="🚀 Générateur de documentation Python intelligent avec IA Groq",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/votre-repo/docGen",
+    url="https://github.com/Notho-freedom/docGen",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -49,18 +49,18 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "docgen=cli:main",
-            "docgen-ai=cli:main",
+            "docgen=docgen.cli:main",
+            "docgen-ai=docgen.cli:main",
         ],
     },
     include_package_data=True,
     package_data={
-        "templates": ["*.j2", "*.html", "*.md"],
+        "docgen": ["templates/*.j2", "templates/*.html", "templates/*.md"],
     },
     keywords="documentation generator python ai groq markdown html",
     project_urls={
-        "Bug Reports": "https://github.com/votre-repo/docGen/issues",
-        "Source": "https://github.com/votre-repo/docGen",
-        "Documentation": "https://github.com/votre-repo/docGen#readme",
+        "Bug Reports": "https://github.com/Notho-freedom/docGen/issues",
+        "Source": "https://github.com/Notho-freedom/docGen",
+        "Documentation": "https://github.com/Notho-freedom/docGen#readme",
     },
 )

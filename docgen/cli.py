@@ -3,8 +3,8 @@ import asyncio
 import logging
 import sys
 from pathlib import Path
-from docgen import extract_doc_info, extract_doc_info_enhanced, DocGenerator
-from formatter import format_markdown, DocumentationFormatter
+from .docgen import extract_doc_info, extract_doc_info_enhanced, DocGenerator
+from .formatter import format_markdown, DocumentationFormatter
 
 def setup_logging(verbose: bool = False):
     """Configure le système de logging."""
@@ -270,7 +270,7 @@ Exemples d'utilisation:
         # Vérification de l'API Groq si nécessaire
         if args.enhanced and not args.no_ai:
             try:
-                from config import config
+                from .config import config
                 if not config.groq_api_key:
                     logger.warning("⚠️  Clé API Groq non trouvée. Utilisation du mode basique.")
                     args.enhanced = False
