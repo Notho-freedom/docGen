@@ -59,6 +59,16 @@ class DocumentationFormatter:
         
         return "\n\n".join(md)
     
+    def format_html(self, doc_info: dict) -> str:
+        """Formate la documentation en HTML (utilise le template de cli.py)."""
+        from .cli import generate_html
+        return generate_html(doc_info)
+
+    def format_json(self, doc_info: dict, indent: int = 2) -> str:
+        """Formate la documentation en JSON."""
+        import json
+        return json.dumps(doc_info, indent=indent, ensure_ascii=False)
+    
     def _generate_header(self, doc_info: Dict[str, Any]) -> str:
         """Génère l'en-tête de la documentation."""
         file_name = os.path.basename(doc_info.get("file_path", "unknown"))
@@ -499,3 +509,13 @@ def format_markdown(doc_info: Dict[str, Any]) -> str:
     """Fonction de compatibilité avec l'API existante."""
     formatter = DocumentationFormatter()
     return formatter.format_markdown(doc_info)
+
+def format_html(doc_info: dict) -> str:
+    """Fonction de compatibilité pour format_html."""
+    formatter = DocumentationFormatter()
+    return formatter.format_html(doc_info)
+
+def format_json(doc_info: dict, indent: int = 2) -> str:
+    """Fonction de compatibilité pour format_json."""
+    formatter = DocumentationFormatter()
+    return formatter.format_json(doc_info, indent=indent)
